@@ -1,4 +1,4 @@
-# 📄 Keepie – Candidate Home Assignment
+# Keepie – Candidate Home Assignment
 
 ## WhatsApp Broadcast Module + Local Scanner Agent
 
@@ -9,7 +9,7 @@ This repository contains two complete backend assignments for Keepie:
 
 ---
 
-# 🟦 Task 1 – WhatsApp Broadcast Module
+# Task 1 – WhatsApp Broadcast Module
 
 ## Overview
 
