@@ -417,6 +417,7 @@ Mock Keepie Upload API:
 Browser:
   - Shows upload status
   - Optional: user clicks "Download last PDF" → saves PDF locally
+```
 
 ## Summary
 
