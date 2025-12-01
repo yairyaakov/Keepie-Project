@@ -1,13 +1,15 @@
 # 📄 Keepie – Candidate Home Assignment
 
-### WhatsApp Broadcast Module + Local Scanner Agent
+## WhatsApp Broadcast Module + Local Scanner Agent
 
 This repository contains two complete backend assignments for Keepie:
 
-1. **WhatsApp Broadcast Module** – a module that sends WhatsApp messages based on an SQL query  
-2. **Scanner Agent** – a complete solution for local document scanning from the browser and uploading the result to Keepie attachments
-3. 
-# Task 1 – WhatsApp Broadcast Module
+1. **WhatsApp Broadcast Module** – Sends WhatsApp messages generated from an SQL-style query.  
+2. **Scanner Agent** – Local document scanning from the browser and uploading files to Keepie attachments.
+
+---
+
+# 🟦 Task 1 – WhatsApp Broadcast Module
 
 ## Overview
 
@@ -20,12 +22,16 @@ The module receives:
 It then:
 
 1. Executes the SQL query  
-2. Extracts relevant customer phone numbers  
-3. Sends a personalized WhatsApp message to each customer via a pluggable API provider  
+2. Extracts the relevant customer phone numbers  
+3. Sends a personalized WhatsApp message to each customer through a pluggable provider  
 
-Designed as a **clean, modular, replaceable system (plug-and-play)**.
+Designed to be **clean, modular, and easily replaceable (plug-and-play)**.
+
+---
 
 ## Project Structure
+
+```text
 KeepieWhatsAppModule/
 │   Program.cs
 │   Customer.cs
@@ -36,6 +42,7 @@ KeepieWhatsAppModule/
 │   IWhatsAppProvider.cs
 │   TwilioWhatsAppProvider.cs
 │   WhatsAppConfig.cs
+
 
 ## Architecture Components
 
@@ -95,7 +102,7 @@ No secrets are hard-coded inside logic classes.
 
 ### How to Run
 
-```csharp
+```bash
 dotnet run
 ```
 
@@ -155,7 +162,7 @@ Although the Keepie server is mocked, the design simulates a real-world scenario
 
 ---
 
-# 1️⃣ How the Agent Works
+# How the Agent Works
 
 The Agent is implemented as a lightweight HTTP server using **ASP.NET Core Minimal APIs**.
 
@@ -167,6 +174,7 @@ The Agent is implemented as a lightweight HTTP server using **ASP.NET Core Minim
 
 ### Scan flow:
 
+```csharp
 GET /scan
 ↓
 IScanner.ScanAsync() // returns byte[]
@@ -174,6 +182,7 @@ IScanner.ScanAsync() // returns byte[]
 IFileEncoder.EncodeToBase64(byte[]) // returns Base64 string
 ↓
 ScanResult { fileName, base64 }
+```
 
 ### Technologies used:
 - C# / .NET 7
@@ -197,6 +206,7 @@ The browser loads the UI from `wwwroot`:
 ```js
 const response = await fetch("/scan");
 const scanResult = await response.json();
+```
 The browser receives:
 
 ```csharp
@@ -321,6 +331,8 @@ The browser side is entirely decoupled.
 (e.g., JWT, OAuth2)
 
 ## Project Structure
+
+```text
 KeepieScannerAgent/
 │
 ├── Program.cs                 # Agent server + Mock Keepie API
@@ -341,6 +353,7 @@ KeepieScannerAgent/
 └── wwwroot/
     ├── index.html
     └── scan.js
+```
 
 ## Architecture
 
