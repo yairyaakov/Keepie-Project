@@ -103,7 +103,7 @@ dotnet run "SELECT ... WHERE Active = 1" "Hello {name}, ..."
 
 # Task 2 – Local Scanner Agent + Web Component
 
-## ✨ Overview
+## Overview
 
 This project implements a **local Scanner Agent** that listens on `http://localhost:9977` and allows the browser to:
 
