@@ -54,6 +54,7 @@ public interface IWhatsAppProvider
 {
     Task SendMessageAsync(string phoneNumber, string messageText);
 }
+```
 
 **Implementation included:**
 - **TwilioWhatsAppProvider** – simulated HTTP POST request
