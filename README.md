@@ -77,6 +77,7 @@ Core business logic:
 
 ```csharp
 public async Task ExecuteWhatsAppBroadcast(string sqlQuery, string messageTemplate)
+```
 
 ### 4. Configuration
 `WhatsAppConfig` injects the API URL and API key.  
@@ -96,11 +97,13 @@ No secrets are hard-coded inside logic classes.
 
 ```csharp
 dotnet run
+```
 
 Or run with your own parameters:
 
 ```csharp
 dotnet run "SELECT ... WHERE Active = 1" "Hello {name}, ..."
+```
 
 # Task 2 – Local Scanner Agent + Web Component
 
@@ -201,6 +204,7 @@ The browser receives:
   "fileName": "scan_20250105_123456.pdf",
   "base64": "JVBERi0xLjUK..."
 }
+```
 
 The Base64 string represents the entire PDF.
 
@@ -228,6 +232,7 @@ With a JSON body:
   "fileName": "scan_20250105_123456.pdf",
   "content": "<Base64 content>"
 }
+```
 
 The mock Keepie API returns:
 
@@ -236,6 +241,7 @@ The mock Keepie API returns:
   "success": true,
   "attachmentId": "c9a4bf2e-7f53-4a31-9eb5-0ef318af9def"
 }
+```
 
 Why this matters:
 
@@ -285,22 +291,26 @@ For example:
 
 ```csharp
 builder.Services.AddSingleton<IScanner, EpsonScanner>();
+```
 
 ### Replace Base64 encoder with ZIP/PDF manipulation library
 
 ```csharp
 builder.Services.AddSingleton<IFileEncoder, PdfCompressor>();
+```
 
 ### Replace the mock upload endpoint with a real Keepie API
 Change:
 
 ```csharp
 POST /api/attachments/upload
+```
 
 To:
 
 ```csharp
 https://api.keepie.com/attachments/upload
+```
 
 ### Improve UI (React/Vue/Angular)
 
