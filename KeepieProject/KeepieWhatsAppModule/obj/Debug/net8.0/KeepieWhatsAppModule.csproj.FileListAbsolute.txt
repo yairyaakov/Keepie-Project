@@ -1,0 +1,14 @@
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\bin\Debug\net8.0\KeepieWhatsAppModule.exe
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\bin\Debug\net8.0\KeepieWhatsAppModule.deps.json
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\bin\Debug\net8.0\KeepieWhatsAppModule.runtimeconfig.json
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\bin\Debug\net8.0\KeepieWhatsAppModule.dll
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\bin\Debug\net8.0\KeepieWhatsAppModule.pdb
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\obj\Debug\net8.0\KeepieWhatsAppModule.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\obj\Debug\net8.0\KeepieWhatsAppModule.AssemblyInfoInputs.cache
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\obj\Debug\net8.0\KeepieWhatsAppModule.AssemblyInfo.cs
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\obj\Debug\net8.0\KeepieWhatsAppModule.csproj.CoreCompileInputs.cache
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\obj\Debug\net8.0\KeepieWhatsAppModule.dll
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\obj\Debug\net8.0\refint\KeepieWhatsAppModule.dll
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\obj\Debug\net8.0\KeepieWhatsAppModule.pdb
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\obj\Debug\net8.0\KeepieWhatsAppModule.genruntimeconfig.cache
+C:\Users\yair8\KeepieProject\KeepieWhatsAppModule\obj\Debug\net8.0\ref\KeepieWhatsAppModule.dll

@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "cX9+F4ni3+X5vxTNBGDnrz1hct2ieFnU9G6oGV1HxTc=",
+  "Source": "KeepieScannerAgent",
+  "BasePath": "_content/KeepieScannerAgent",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "KeepieScannerAgent\\wwwroot",
+      "Source": "KeepieScannerAgent",
+      "ContentRoot": "C:\\Users\\yair8\\KeepieProject\\KeepieScannerAgent\\wwwroot\\",
+      "BasePath": "_content/KeepieScannerAgent",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\yair8\\KeepieProject\\KeepieScannerAgent\\wwwroot\\index.html",
+      "SourceId": "KeepieScannerAgent",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\yair8\\KeepieProject\\KeepieScannerAgent\\wwwroot\\",
+      "BasePath": "_content/KeepieScannerAgent",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\yair8\\KeepieProject\\KeepieScannerAgent\\wwwroot\\scan.js",
+      "SourceId": "KeepieScannerAgent",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\yair8\\KeepieProject\\KeepieScannerAgent\\wwwroot\\",
+      "BasePath": "_content/KeepieScannerAgent",
+      "RelativePath": "scan.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\scan.js"
+    }
+  ]
+}

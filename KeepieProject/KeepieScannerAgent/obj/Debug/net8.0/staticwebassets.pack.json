@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\yair8\\KeepieProject\\KeepieScannerAgent\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\yair8\\KeepieProject\\KeepieScannerAgent\\wwwroot\\scan.js",
+      "PackagePath": "staticwebassets\\scan.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.KeepieScannerAgent.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.KeepieScannerAgent.props",
+      "PackagePath": "build\\KeepieScannerAgent.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.KeepieScannerAgent.props",
+      "PackagePath": "buildMultiTargeting\\KeepieScannerAgent.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.KeepieScannerAgent.props",
+      "PackagePath": "buildTransitive\\KeepieScannerAgent.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
