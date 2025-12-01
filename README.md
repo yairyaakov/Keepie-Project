@@ -1,118 +1,87 @@
-Keepie Scanner Agent – Architecture & Workflow
+# Keepie Scanner Agent – Architecture & Workflow
+
+This document provides a concise technical overview of the Keepie Scanner Agent, how it interacts with the browser, and how scanned documents are uploaded to Keepie attachments.  
+It also explains why the solution is modular and which components can be replaced or improved.
+
+---
+
+## 1. How the Agent Works
+
+The Keepie Scanner Agent is a lightweight local web service built with **ASP.NET Core**.  
+It runs on the user’s machine and provides an HTTP interface for scanning documents.
+
+In this exercise, the scanner is **mocked**:
+
+- `MockScanner` simulates a physical scanner by reading a local sample PDF.
+- `ScanService` converts the scanned bytes to Base64 and returns a structured result.
+- The endpoint `GET /scan` triggers a scan and returns:
+
+```json
+{
+  "fileName": "scan_YYYYMMDD_HHMMSS.pdf",
+  "base64": "<PDF Base64>"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Keepie Scanner Agent – Architecture Overview
 1. How the Agent Works
 
-The Keepie Scanner Agent is a lightweight local web service (ASP.NET Core) that runs on the user’s machine.
-Its purpose is to communicate with the physical scanner and expose a simple HTTP API that the browser can call.
+The Keepie Scanner Agent is a lightweight local service running on the end-user’s machine.
+Its purpose is to provide a secure, simple bridge between a physical scanner and the web browser, without requiring the browser to access the hardware directly.
 
-In this exercise the scanner itself is mocked:
+🔹 Core Responsibilities
 
-MockScanner simulates a real scanner by reading a sample PDF from disk.
+Expose a local HTTP endpoint (GET /scan)
 
-ScanService converts the scanned bytes into Base64 and wraps them in a response model.
+Trigger a scan operation (via a mock scanner in this assignment)
 
-The endpoint GET /scan triggers the scan and returns { fileName, base64 }.
+Convert the scanned file (PDF bytes) into Base64
 
-The Agent does not store files. It simply:
+Return a structured JSON response containing:
 
-Activates the scanner
+fileName
 
-Converts the scanned file to Base64
+base64 (the scanned document)
 
-Returns it to the browser
+🔹 Internal Components
 
-2. How the Browser Communicates with the Agent
+The Agent is built using dependency injection and clear interfaces:
 
-The browser loads a small web UI from the Agent (index.html + scan.js).
-When the user clicks Scan, the browser performs:
-fetch("/scan")  // GET request to the local agent
-The Agent responds with JSON containing:
-{
-  "fileName": "...",
-  "base64": "..."
-}
-This JSON response is kept in memory on the client side (lastScanResult),
-so the browser can either upload it to Keepie or download it locally.
-3. How the Upload to Attachments Is Performed
+Interface	Responsibility
+IScanner	Handles the actual scan process (mocked by reading sample.pdf)
+IFileEncoder	Converts binary files into Base64 strings
+IScanService	Orchestrates scanning + encoding into a single workflow
+🔹 Scan Workflow (Step-by-Step)
 
-After scanning, the browser immediately sends the file to the (mocked) Keepie server:
-fetch("/api/attachments/upload", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        clientId: "...",
-        fileName: scanResult.fileName,
-        content: scanResult.base64
-    })
-});
-This simulates the real production flow:
+Browser calls GET /scan
 
-Agent → Browser → Keepie Server
+The Agent resolves IScanService via DI
 
-The Keepie mock returns:
-{
-  "success": true,
-  "attachmentId": "..."
-}
-In a real environment, this would be the moment where the file is stored in cloud storage and linked to the relevant client record.
-4. Why the Solution Is Modular
+IScanService:
 
-The architecture follows clear separation of concerns:
-| Layer / Component   | Responsibility                              |
-| ------------------- | ------------------------------------------- |
-| `IScanner`          | Describes how scanning is performed         |
-| `MockScanner`       | Current mock implementation for local demo  |
-| `IFileEncoder`      | Defines how bytes are encoded               |
-| `Base64FileEncoder` | Encodes file bytes to Base64                |
-| `IScanService`      | Business logic: scan + encode               |
-| `ScanService`       | Implementation of scanning workflow         |
-| API Endpoints       | HTTP interface for browser                  |
-| `scan.js`           | Frontend logic calling the Agent and Keepie |
+Calls IScanner.ScanAsync()
+→ returns raw PDF bytes
 
-Because each responsibility is isolated behind interfaces, components can be replaced without touching the rest of the system.
-This is the entire purpose of using Dependency Injection + Interfaces.
+Passes the bytes to IFileEncoder
+→ returns Base64
 
-5. Parts That Can Be Replaced or Improved
+A ScanResult object is created
 
-The modular design allows the following improvements without breaking the app:
+The Agent sends it back to the browser as JSON
 
-🔧 Replaceable / Pluggable components
+🔹 Why Base64?
 
-Scanner implementation
-Replace MockScanner with a real hardware integration.
-
-Encoding strategy
-Swap Base64FileEncoder with compression or alternative encoding.
-
-Upload endpoint
-Replace the mocked Keepie API with the real cloud Keepie service.
-
-Storage logic
-Currently no file is stored. In real production, the server would save files to Blob Storage / S3.
-
-Authentication
-Add JWT-based authentication, so clientId comes from a real user session.
-
-UI
-Replace the simple HTML/JS page with a production-level React/Angular component.
-
-🧩 Independent layers
-
-Each component can evolve separately because nothing is hard-coded into the others.
-
-Summary
-
-This project demonstrates the full workflow of:
-
-Scanning → Returning Base64 → Uploading to Keepie → Downloading locally
-
-It is built in a clean, modular, extensible architecture using:
-
-Interfaces
-
-Dependency Injection
-
-Clear separation between Agent, Browser, and Keepie Server
-
-making it suitable for real-world expansion.
-
-If you want, I can format this directly as a README.md file with proper Markdown headers, code formatting, and GitHub styling.
+Binary files cannot be transferred in a JSON HTTP response.
+Base64 provides a safe text-based representation of the PDF.
