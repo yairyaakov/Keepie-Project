@@ -109,7 +109,7 @@ dotnet run
 Or run with your own parameters:
 
 ```csharp
-dotnet run "SELECT ... WHERE Active = 1" "Hello {name}, ..."
+dotnet run -- "SELECT CustomerName, Phone, Active FROM Customers WHERE Active = 1 AND CustomerName = 'Ori'" "Hi {name}, sent from real SQLite!"
 ```
 
 # Task 2 – Local Scanner Agent + Web Component
